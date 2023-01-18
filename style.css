@@ -1,0 +1,25 @@
+body {
+    padding: 0;
+    margin: 0;
+
+}
+
+#calculator {
+    background-color: black;
+    width: 400px;
+    margin: auto;
+    margin-top: 25px;
+
+}
+
+#display {
+    height: 120px;
+    background-color: blue;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    background-color: purple;
+    height: 500px;
+}
