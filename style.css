@@ -9,17 +9,30 @@ body {
     width: 400px;
     margin: auto;
     margin-top: 25px;
-
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 #display {
-    height: 120px;
+    height: 80px;
+    padding: 25px;
     background-color: blue;
+    text-align: center;
+    font-size: 4em;
+    margin-left: auto;
+    margin-top: auto;
 }
 
 #buttons {
-    display: flex;
-    flex-direction: column;
-    background-color: purple;
-    height: 500px;
+    display: grid;
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px; 
+    column-gap: 5px;
+    row-gap: 5px;
+    
+}
+
+#zero {
+    width: 100%;
 }
