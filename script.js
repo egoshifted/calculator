@@ -3,11 +3,14 @@ let resultValue = document.getElementById('result-value');
 
 // CURRENT OPERATOR STATUS
 let currentStatus = "add";
+let operatorEngaged = false;
 let pointStatus = false;
-
+let currentNumber = 0;
+let storedNumber = 0;
 
 // Set ID to keys on window load (Operators & Numbers)
 window.onload = function () {
+
     for (i = 0; i < keys.children.length; i ++) {
         const currentKeyName = keys.children[i].innerText;
         keys.children[i].id = currentKeyName;
@@ -52,18 +55,26 @@ window.onload = function () {
 // OPERATOR & NUMBER FUNCTIONS
 
 function numberFunc(e) {
-    if (e.target.className === "number") {
-        resultValue.innerText += e.target.id;
+    switch (currentNumber) {
+        case 0:
+            currentNumber = parseInt(e.target.id);
+            resultValue.innerText = currentNumber;
+            break;
+        default:
+            selectedNumber = parseInt(e.target.id);
+            currentNumber = `${currentNumber}${selectedNumber}`;
+            resultValue.innerText = currentNumber;
     }
-
 }
+
 
 function clearFunc(e) { // TODO
-resultValue.innerText = "0";
+    resultValue.innerText = "0";
+    currentNumber = 0;
 }
 
-function switchFunc(e) { 
-    if(currentStatus === "add") {
+function switchFunc(e) {
+    if (currentStatus === "add") {
         currentStatus = "subtract"
     } else {
         currentStatus = "add"
@@ -76,35 +87,35 @@ function percentFunc(e) { // TODO
 }
 
 
-function multiplyFunc(e) { 
+function multiplyFunc(e) {
+    operatorEngaged = true;
     currentStatus = "multiply";
     console.log(currentStatus);
 }
 
 
-function divideFunc(e) { 
+function divideFunc(e) {
+    operatorEngaged = true;
     currentStatus = "divide";
     console.log(currentStatus);
 
 }
 
-function subtractFunc(e) { 
+function subtractFunc(e) {
+    operatorEngaged = true;
     currentStatus = "subtract";
     console.log(currentStatus);
 
 }
 
-function addFunc(e) { 
+function addFunc(e) {
+    operatorEngaged = true;
     currentStatus = "add";
+    storedNumber = currentNumber;
     console.log(currentStatus);
 }
 
-
-function equalsFunc(e) { // TODO
-
-}
-
-function pointFunc(e) { 
+function pointFunc(e) {
     pointStatus = true;
     console.log(pointStatus);
 
@@ -114,3 +125,15 @@ function backspaceFunc(e) { // TODO
 
 }
 
+function equalsFunc(e) { 
+switch (currentStatus) {
+    case "add": ///;
+    break;
+    case "subtract": ///;
+    break;
+    case "multiply": ///;
+    break;
+    case "divide": ///;
+    break;
+    }
+}
