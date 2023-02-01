@@ -5,6 +5,8 @@ let resultValue = document.getElementById('result-value');
 let currentStatus = "add";
 let operatorEngaged = false;
 let pointStatus = false;
+
+// MEMORY
 let currentNumber = 0;
 let storedNumber = 0;
 let newNumber = 0;
@@ -57,29 +59,41 @@ window.onload = function () {
 
 function numberFunc(e) {
     if (operatorEngaged) {
-        storedNumber = currentNumber;
-        selectedNumber = parseInt(e.target.id);
-        newNumber = `${currentNumber}${selectedNumber}`;
-        resultValue.innerText = newNumber;
-        console.log(newNumber)
-
-    } else {
         switch (currentNumber) {
-            case 0: currentNumber = parseInt(e.target.id);
+            case storedNumber:
+                currentNumber = parseInt(e.target.id);
                 resultValue.innerText = currentNumber;
+                newNumber = currentNumber;
                 break;
             default:
                 selectedNumber = parseInt(e.target.id);
                 currentNumber = `${currentNumber}${selectedNumber}`;
                 resultValue.innerText = currentNumber;
+                newNumber = currentNumber;
         }
-    }     
-    
+
+    } else {
+        switch (currentNumber) {
+            case 0:
+                currentNumber = parseInt(e.target.id);
+                resultValue.innerText = currentNumber;
+                storedNumber = currentNumber;
+                break;
+            default:
+                selectedNumber = parseInt(e.target.id);
+                currentNumber = `${currentNumber}${selectedNumber}`;
+                resultValue.innerText = currentNumber;
+                storedNumber = currentNumber;
+        }
+    }
 }
 
 
 
-function clearFunc(e) { // TODO
+
+
+
+function clearFunc(e) { 
     resultValue.innerText = "0";
     currentNumber = 0;
     storedNumber = 0;
@@ -103,6 +117,7 @@ function percentFunc(e) { // TODO
 
 
 function multiplyFunc(e) {
+    resultValue.innerText = storedNumber;
     operatorEngaged = true;
     currentStatus = "multiply";
     console.log(currentStatus);
@@ -110,6 +125,7 @@ function multiplyFunc(e) {
 
 
 function divideFunc(e) {
+    resultValue.innerText = storedNumber;
     operatorEngaged = true;
     currentStatus = "divide";
     console.log(currentStatus);
@@ -117,6 +133,7 @@ function divideFunc(e) {
 }
 
 function subtractFunc(e) {
+    resultValue.innerText = storedNumber;
     operatorEngaged = true;
     currentStatus = "subtract";
     console.log(currentStatus);
@@ -124,6 +141,7 @@ function subtractFunc(e) {
 }
 
 function addFunc(e) {
+    resultValue.innerText = storedNumber;
     operatorEngaged = true;
     currentStatus = "add";
     storedNumber = currentNumber;
