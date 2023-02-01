@@ -60,8 +60,7 @@ window.onload = function () {
 function numberFunc(e) {
     if (operatorEngaged) {
         switch (currentNumber) {
-            case storedNumber:
-                currentNumber = parseInt(e.target.id);
+            case storedNumber: currentNumber = parseInt(e.target.id);
                 resultValue.innerText = currentNumber;
                 newNumber = currentNumber;
                 break;
@@ -74,8 +73,7 @@ function numberFunc(e) {
 
     } else {
         switch (currentNumber) {
-            case 0:
-                currentNumber = parseInt(e.target.id);
+            case 0: currentNumber = parseInt(e.target.id);
                 resultValue.innerText = currentNumber;
                 storedNumber = currentNumber;
                 break;
@@ -89,11 +87,7 @@ function numberFunc(e) {
 }
 
 
-
-
-
-
-function clearFunc(e) { 
+function clearFunc(e) {
     resultValue.innerText = "0";
     currentNumber = 0;
     storedNumber = 0;
@@ -160,14 +154,21 @@ function backspaceFunc(e) { // TODO
 
 function equalsFunc(e) {
     switch (currentStatus) {
-        case "add": // /;
+        case "add":
+            resultValue.innerText = Number(storedNumber) + Number(newNumber);
             break;
-        case "subtract": // /;
+        case "subtract":
+            resultValue.innerText = Number(storedNumber) - Number(newNumber);
             break;
-        case "multiply": // /;
+        case "multiply":
+            resultValue.innerText = Number(storedNumber) * Number(newNumber);
             break;
-        case "divide": // /;
+        case "divide":
+            resultValue.innerText = Number(storedNumber) / Number(newNumber);
             break;
     }
 }
+
+
+
 
