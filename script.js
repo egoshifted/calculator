@@ -7,6 +7,7 @@ let operatorEngaged = false;
 let pointStatus = false;
 let currentNumber = 0;
 let storedNumber = 0;
+let newNumber = 0;
 
 // Set ID to keys on window load (Operators & Numbers)
 window.onload = function () {
@@ -55,22 +56,36 @@ window.onload = function () {
 // OPERATOR & NUMBER FUNCTIONS
 
 function numberFunc(e) {
-    switch (currentNumber) {
-        case 0:
-            currentNumber = parseInt(e.target.id);
-            resultValue.innerText = currentNumber;
-            break;
-        default:
-            selectedNumber = parseInt(e.target.id);
-            currentNumber = `${currentNumber}${selectedNumber}`;
-            resultValue.innerText = currentNumber;
-    }
+    if (operatorEngaged) {
+        storedNumber = currentNumber;
+        selectedNumber = parseInt(e.target.id);
+        newNumber = `${currentNumber}${selectedNumber}`;
+        resultValue.innerText = newNumber;
+        console.log(newNumber)
+
+    } else {
+        switch (currentNumber) {
+            case 0: currentNumber = parseInt(e.target.id);
+                resultValue.innerText = currentNumber;
+                break;
+            default:
+                selectedNumber = parseInt(e.target.id);
+                currentNumber = `${currentNumber}${selectedNumber}`;
+                resultValue.innerText = currentNumber;
+        }
+    }     
+    
 }
+
 
 
 function clearFunc(e) { // TODO
     resultValue.innerText = "0";
     currentNumber = 0;
+    storedNumber = 0;
+    newNumber = 0;
+    operatorEngaged = false;
+    currentStatus = "";
 }
 
 function switchFunc(e) {
@@ -125,15 +140,16 @@ function backspaceFunc(e) { // TODO
 
 }
 
-function equalsFunc(e) { 
-switch (currentStatus) {
-    case "add": ///;
-    break;
-    case "subtract": ///;
-    break;
-    case "multiply": ///;
-    break;
-    case "divide": ///;
-    break;
+function equalsFunc(e) {
+    switch (currentStatus) {
+        case "add": // /;
+            break;
+        case "subtract": // /;
+            break;
+        case "multiply": // /;
+            break;
+        case "divide": // /;
+            break;
     }
 }
+
